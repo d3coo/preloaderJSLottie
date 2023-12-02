@@ -7,8 +7,8 @@ overlay.style.cssText = `
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(255, 255, 255, 0.7);
     z-index: 999;
 `;
@@ -19,6 +19,8 @@ lottieContainer.style.cssText = `
     max-width: 100%;
     max-height: 100%;
     display: none;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,22 +31,17 @@ lottieContainer.style.display = 'none';
 document.body.appendChild(overlay);
 document.body.appendChild(lottieContainer);
 
-let overlayHidden = false;
-
 function hideOverlay() {
-    if (!overlayHidden) {
-        overlay.style.display = 'none';
-        lottieContainer.style.display = 'block';
-        // Substitua pela URL direta do seu arquivo JSON do Lottie.
-        lottie.loadAnimation({
-            container: lottieContainer,
-            renderer: 'svg', // ou 'canvas' se preferir
-            loop: true,
-            autoplay: true,
-            path: 'https://d3coo.github.io/preloaderJSLottie/car.json',
-        });
-        overlayHidden = true;
-    }
+    overlay.style.display = 'none';
+    lottieContainer.style.display = 'block';
+    // Substitua pela URL direta do seu arquivo JSON do Lottie.
+    lottie.loadAnimation({
+        container: lottieContainer,
+        renderer: 'svg', // ou 'canvas' se preferir
+        loop: true,
+        autoplay: true,
+        path: 'https://d3coo.github.io/preloaderJSLottie/car.json',
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
