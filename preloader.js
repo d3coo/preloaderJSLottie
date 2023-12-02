@@ -29,17 +29,22 @@ lottieContainer.style.display = 'none';
 document.body.appendChild(overlay);
 document.body.appendChild(lottieContainer);
 
+let overlayHidden = false;
+
 function hideOverlay() {
-    overlay.style.display = 'none';
-    lottieContainer.style.display = 'block';
-    // Substitua pela URL direta do seu arquivo JSON do Lottie.
-    lottie.loadAnimation({
-        container: lottieContainer,
-        renderer: 'svg', // ou 'canvas' se preferir
-        loop: true,
-        autoplay: true,
-        path: 'https://d3coo.github.io/preloaderJSLottie/car.json',
-    });
+    if (!overlayHidden) {
+        overlay.style.display = 'none';
+        lottieContainer.style.display = 'block';
+        // Substitua pela URL direta do seu arquivo JSON do Lottie.
+        lottie.loadAnimation({
+            container: lottieContainer,
+            renderer: 'svg', // ou 'canvas' se preferir
+            loop: true,
+            autoplay: true,
+            path: 'https://d3coo.github.io/preloaderJSLottie/car.json',
+        });
+        overlayHidden = true;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
