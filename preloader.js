@@ -29,6 +29,7 @@ document.body.appendChild(lottieContainer);
 
 function hideOverlay() {
     overlay.style.display = 'none';
+    lottieContainer.style.display = 'block';
     // Substitua pela URL direta do seu arquivo JSON do Lottie.
     lottie.loadAnimation({
         container: lottieContainer,
@@ -37,8 +38,9 @@ function hideOverlay() {
         autoplay: true,
         path: 'https://d3coo.github.io/preloaderJSLottie/car.json',
     });
+
+    // Remove the overlay after the animation is loaded
+    lottieContainer.addEventListener('animationcomplete', () => {
+        overlay.style.display = 'none';
+    });
 }
-
-document.addEventListener('DOMContentLoaded', hideOverlay);
-
-window.addEventListener('load', hideOverlay);
